@@ -5,6 +5,7 @@ class ResponsiveWidget extends StatelessWidget {
   final Color? backgroundColor;
   final AppBar? appBar;
   final Drawer? drawer;
+  final Widget? bottomNavigationBar;
   final bool resizeToAvoidBottomInset;
 
   const ResponsiveWidget(
@@ -12,6 +13,7 @@ class ResponsiveWidget extends StatelessWidget {
       required this.builder,
       this.appBar,
       this.drawer,
+      this.bottomNavigationBar,
       this.backgroundColor,
       this.resizeToAvoidBottomInset = false})
       : super(key: key);
@@ -24,6 +26,7 @@ class ResponsiveWidget extends StatelessWidget {
         resizeToAvoidBottomInset: resizeToAvoidBottomInset,
         appBar: appBar,
         drawer: drawer,
+        bottomNavigationBar: bottomNavigationBar,
         body: Builder(
           builder: (context) => builder(context, constraints),
         ),
