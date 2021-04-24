@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vaulty/ui/shared/responsive_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:vaulty/view-models/home_view_model.dart';
 
 class HomeScreen extends StatelessWidget {
+  final HomeViewModel _homeVM = Get.put(HomeViewModel());
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(builder: (context, size) {
@@ -15,7 +19,21 @@ class HomeScreen extends StatelessWidget {
             Center(
               child: Container(
                 height: 60.h,
-                decoration: BoxDecoration(),
+                width: size.width * .8,
+                decoration: BoxDecoration(
+                    color: Color(0xfff9f9f9),
+                    borderRadius: BorderRadius.circular(15.h)),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search',
+                    suffix: IconButton(
+                      icon: Icon(Icons.search_rounded),
+                      onPressed: () {
+                        _homeVM.search();
+                      },
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
