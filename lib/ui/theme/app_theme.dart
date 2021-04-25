@@ -36,8 +36,8 @@ ThemeData darkTheme = ThemeData(
     bottomAppBarTheme: BottomAppBarTheme(
         color: Color(0xff040c24), shape: CircularNotchedRectangle()),
     primaryColorBrightness: Brightness.dark,
-    primaryColorLight: Colors.black,
-    primaryColorDark: Colors.white,
+    primaryColorLight: Colors.white,
+    primaryColorDark: Colors.black,
     brightness: Brightness.dark,
     highlightColor: Color(0xff7faeff),
     disabledColor: Color(0xff19213c),
