@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vaulty/models/account.dart';
-import 'package:vaulty/ui/shared/app_card.dart';
+import 'package:vaulty/ui/shared/all_apps_listview.dart';
 import 'package:vaulty/ui/shared/last_accessed_apps_carousel.dart';
 import 'package:vaulty/ui/shared/responsive_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,19 +45,7 @@ class HomeView extends StatelessWidget {
               ),
             ).pad,
             VerticalSpacer(flex: 1.5),
-            Container(
-                padding: EdgeInsets.symmetric(horizontal: 5.w),
-                alignment: Alignment.centerLeft,
-                constraints: BoxConstraints(
-                    maxHeight: size.height * .65,
-                    minWidth: size.width,
-                    maxWidth: size.width),
-                child: ListView.builder(
-                    padding: EdgeInsets.only(bottom: 20.h),
-                    itemCount: Account.accounts.length,
-                    itemBuilder: (context, index) {
-                      return AppCard(account: Account.accounts[index]);
-                    }))
+            AllAppsListView(accounts: Account.accounts)
           ],
         ),
       );
