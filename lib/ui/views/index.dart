@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vaulty/constants/constants.dart';
 import 'package:vaulty/controllers/theme_controller.dart';
 import 'package:vaulty/ui/shared/responsive_widget.dart';
 import 'package:vaulty/ui/views/home.dart';
@@ -22,6 +23,14 @@ class _IndexViewState extends State<IndexView> {
     _controller = PageController(initialPage: _currentPage);
   }
 
+  void onPageChanged(int page) {
+    setState(() {
+      _currentPage = page;
+    });
+    _controller.jumpToPage(page);
+    if (page == 1) Get.toNamed(SecurityOnboardingRoute);
+  }
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
@@ -40,12 +49,7 @@ class _IndexViewState extends State<IndexView> {
             currentIndex: _currentPage,
             unselectedItemColor: Theme.of(context).unselectedWidgetColor,
             selectedItemColor: Theme.of(context).primaryIconTheme.color,
-            onTap: (int page) {
-              setState(() {
-                _currentPage = page;
-              });
-              _controller.jumpToPage(page);
-            },
+            onTap: onPageChanged,
             items: [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
               BottomNavigationBarItem(

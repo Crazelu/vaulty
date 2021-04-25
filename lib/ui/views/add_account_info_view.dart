@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vaulty/ui/shared/button.dart';
 import 'package:vaulty/ui/shared/custom_form_field.dart';
 import 'package:vaulty/ui/shared/responsive_widget.dart';
 import 'package:vaulty/ui/shared/vertical_spacer.dart';
@@ -118,29 +119,14 @@ class _AddAccountInfoViewState extends State<AddAccountInfoView> {
 
                     VerticalSpacer(flex: 5),
 
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: TextButton(
-                        style: ButtonStyle(
-                          minimumSize: MaterialStateProperty.resolveWith(
-                              (states) => Size(70.w, 50.h)),
-                          foregroundColor: MaterialStateProperty.resolveWith(
-                              (states) => Theme.of(context).primaryColorLight),
-                          backgroundColor: MaterialStateProperty.resolveWith(
-                              (states) => Theme.of(context).buttonColor),
-                          overlayColor: MaterialStateProperty.resolveWith(
-                              (states) => Theme.of(context).highlightColor),
-                        ),
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            print('Validated');
-                          }
-                        },
-                        child: Text(
-                          'Add account',
-                          style: TextStyle(fontSize: 18.sp),
-                        ),
-                      ),
+                    CustomButton(
+                      padding: 20,
+                      text: 'Add account',
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          print('Validated');
+                        }
+                      },
                     ),
                   ],
                 )),
