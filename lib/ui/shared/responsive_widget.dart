@@ -6,6 +6,7 @@ class ResponsiveWidget extends StatelessWidget {
   final AppBar? appBar;
   final Drawer? drawer;
   final Widget? bottomNavigationBar;
+  final Widget? floatingActionButton;
   final bool resizeToAvoidBottomInset;
 
   const ResponsiveWidget(
@@ -14,6 +15,7 @@ class ResponsiveWidget extends StatelessWidget {
       this.appBar,
       this.drawer,
       this.bottomNavigationBar,
+      this.floatingActionButton,
       this.backgroundColor,
       this.resizeToAvoidBottomInset = false})
       : super(key: key);
@@ -30,6 +32,7 @@ class ResponsiveWidget extends StatelessWidget {
         body: Builder(
           builder: (context) => builder(context, constraints),
         ),
+        floatingActionButton: floatingActionButton,
       );
     });
   }

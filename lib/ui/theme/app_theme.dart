@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 ThemeData lightTheme = ThemeData(
     primarySwatch: Colors.blue,
     backgroundColor: Color(0xffffffff),
-    primaryColor: Color(0xffffffff),
+    primaryColor: Color(0xff050f2e),
     scaffoldBackgroundColor: Color(0xffffffff),
     bottomAppBarTheme: BottomAppBarTheme(
         color: Color(0xffffffff), shape: CircularNotchedRectangle()),
@@ -17,7 +17,8 @@ ThemeData lightTheme = ThemeData(
     hintColor: Color(0xffadadad),
     shadowColor: Color(0xfffbfbfb),
     textSelectionTheme: TextSelectionThemeData(cursorColor: Color(0xff000000)),
-    appBarTheme: AppBarTheme(elevation: 0, centerTitle: false),
+    appBarTheme:
+        AppBarTheme(elevation: 0, centerTitle: false, color: Color(0xffffffff)),
     primaryIconTheme: IconThemeData(
       color: Color(0xff3780ff),
     ),
@@ -32,7 +33,7 @@ ThemeData lightTheme = ThemeData(
 ThemeData darkTheme = ThemeData(
     primarySwatch: Colors.blue,
     backgroundColor: Color(0xff050f2e),
-    primaryColor: Color(0xff050f2e),
+    primaryColor: Color(0xffffffff),
     scaffoldBackgroundColor: Color(0xff050f2e),
     bottomAppBarTheme: BottomAppBarTheme(
         color: Color(0xff040c24), shape: CircularNotchedRectangle()),
@@ -46,7 +47,8 @@ ThemeData darkTheme = ThemeData(
     shadowColor: Color(0xfffbfbfb).withOpacity(.3),
     textSelectionTheme: TextSelectionThemeData(cursorColor: Color(0xffffffff)),
     hintColor: Color(0xffadadad),
-    appBarTheme: AppBarTheme(elevation: 0, centerTitle: false),
+    appBarTheme:
+        AppBarTheme(elevation: 0, centerTitle: false, color: Color(0xff050f2e)),
     primaryIconTheme: IconThemeData(
       color: Color(0xff1055af),
     ),

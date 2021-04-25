@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:vaulty/models/account.dart';
 import 'package:vaulty/ui/shared/all_apps_listview.dart';
 import 'package:vaulty/ui/shared/last_accessed_apps_carousel.dart';
+import 'package:vaulty/ui/shared/layout.dart';
 import 'package:vaulty/ui/shared/responsive_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vaulty/controllers/home_controller.dart';
@@ -11,44 +12,77 @@ import 'package:vaulty/ui/shared/search_widget.dart';
 import 'package:vaulty/ui/shared/vertical_spacer.dart';
 import 'package:vaulty/ui/shared/extensions.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
+  @override
+  _HomeViewState createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
   final HomeController _homeController = Get.put(HomeController());
+
+  void showSheet() {
+    showBottomSheet(
+        context: context,
+        builder: (context) {
+          return LayoutWidget(builder: (context, size) {
+            return Container(height: size.height * .7, width: size.width);
+          });
+        },
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10.h),
+            topRight: Radius.circular(10.h),
+          ),
+        ),
+        backgroundColor: Theme.of(context).primaryColor);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ResponsiveWidget(builder: (context, size) {
-      ScreenUtil.init(BoxConstraints.tight(size));
-      return Container(
-        height: size.height,
-        width: size.width,
-        child: ListView(
-          children: [
-            VerticalSpacer(),
-            Search(),
-            VerticalSpacer(flex: 2),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Last Accessed",
-                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700),
-              ),
-            ).pad,
-            VerticalSpacer(flex: 1.5),
-            LastAccessedAppsCarousel(
-                    accounts: Account.accounts.take(6).toList())
-                .pad,
-            VerticalSpacer(flex: 2),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Your apps",
-                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600),
-              ),
-            ).pad,
-            VerticalSpacer(flex: 1.5),
-            AllAppsListView(accounts: Account.accounts)
-          ],
+    return ResponsiveWidget(
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Theme.of(context).primaryColor,
+          child: Icon(Icons.add),
+          onPressed: () {
+            showSheet();
+          },
         ),
-      );
-    });
+        builder: (context, size) {
+          ScreenUtil.init(BoxConstraints.tight(size));
+          return Container(
+            height: size.height,
+            width: size.width,
+            child: ListView(
+              children: [
+                VerticalSpacer(),
+                Search(),
+                VerticalSpacer(flex: 2),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Last Accessed",
+                    style:
+                        TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700),
+                  ),
+                ).pad,
+                VerticalSpacer(flex: 1.5),
+                LastAccessedAppsCarousel(
+                        accounts: Account.accounts.take(6).toList())
+                    .pad,
+                VerticalSpacer(flex: 2),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Your apps",
+                    style:
+                        TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600),
+                  ),
+                ).pad,
+                VerticalSpacer(flex: 1.5),
+                AllAppsListView(accounts: Account.accounts)
+              ],
+            ),
+          );
+        });
   }
 }

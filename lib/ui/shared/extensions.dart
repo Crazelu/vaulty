@@ -13,6 +13,9 @@ extension ImageIconExtension on String {
   SizedBox get icon => SizedBox(
       child: Image.network(
         this,
+        errorBuilder: (context, _, __) {
+          return Icon(Icons.error);
+        },
         frameBuilder: (context, child, _, __) {
           return child;
         },
@@ -26,6 +29,9 @@ extension ImageIconExtension on String {
   SizedBox get lastAccessedIcon => SizedBox(
       child: Image.network(
         this,
+        errorBuilder: (context, _, __) {
+          return Icon(Icons.error);
+        },
         frameBuilder: (context, child, _, __) {
           return child;
         },
