@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vaulty/controllers/home_controller.dart';
 import 'package:vaulty/models/account.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,8 +9,10 @@ class AppCard extends StatelessWidget {
   final Account account;
 
   const AppCard({Key? key, required this.account}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final HomeController _homeController = Get.find();
     return ListTile(
       leading: Container(
         alignment: Alignment.center,
@@ -23,7 +27,7 @@ class AppCard extends StatelessWidget {
             : Text(
                 account.appName.substring(0, 1).toUpperCase(),
                 style: TextStyle(
-                  color: Theme.of(context).primaryColorDark,
+                  color: _homeController.getColor(),
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w800,
                 ),
