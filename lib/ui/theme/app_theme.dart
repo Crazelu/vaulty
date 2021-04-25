@@ -46,9 +46,6 @@ ThemeData darkTheme = ThemeData(
     hintColor: Color(0xffadadad),
     appBarTheme: AppBarTheme(elevation: 0, centerTitle: false),
     primaryIconTheme: IconThemeData(
-      color: Color(0xff3780ff),
-    ),
-    iconTheme: IconThemeData(
       color: Color(0xff1055af),
     ),
     buttonTheme: ButtonThemeData(
