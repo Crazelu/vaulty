@@ -25,7 +25,7 @@ class HomeView extends StatelessWidget {
                 height: 60.h,
                 width: size.width * .8,
                 decoration: BoxDecoration(
-                    color: Color(0xfff9f9f9),
+                    color: Theme.of(context).shadowColor,
                     borderRadius: BorderRadius.circular(15.h)),
                 child: TextField(
                   decoration: InputDecoration(
