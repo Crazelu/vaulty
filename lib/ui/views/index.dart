@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vaulty/constants/constants.dart';
+import 'package:vaulty/controllers/index_controller.dart';
 import 'package:vaulty/controllers/theme_controller.dart';
 import 'package:vaulty/ui/shared/responsive_widget.dart';
 import 'package:vaulty/ui/views/home.dart';
@@ -16,6 +17,7 @@ class _IndexViewState extends State<IndexView> {
   int _currentPage = 0;
   late PageController _controller;
   ThemeController _themeController = Get.find();
+  IndexController _indexController = Get.put(IndexController());
 
   @override
   void initState() {
@@ -28,7 +30,12 @@ class _IndexViewState extends State<IndexView> {
       _currentPage = page;
     });
     _controller.jumpToPage(page);
-    if (page == 1) Get.toNamed(SecurityOnboardingRoute);
+    //if user is accessing the security page for the first time, show onboarding
+    if (page == 1 &&
+        _indexController.isUserNavigatingToSecurityPageForFirstTime) {
+      Get.toNamed(SecurityOnboardingRoute);
+      _indexController.registerNavigationToSecurityOnboardingEvent();
+    }
   }
 
   @override
