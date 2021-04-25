@@ -22,7 +22,7 @@ class AppCard extends StatelessWidget {
             : Text(account.appName.substring(0, 1).toUpperCase()),
       ),
       title: Text(account.appName),
-      subtitle: Text(account.email ?? account.userName ?? ''),
+      subtitle: Text(account.userName ?? account.email ?? ''),
       trailing:
           IconButton(icon: Icon(Icons.more_vert_rounded), onPressed: () {}),
     );
