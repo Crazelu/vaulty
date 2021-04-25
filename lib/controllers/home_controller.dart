@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeViewModel extends GetxController {
+class HomeController extends GetxController {
   late TextEditingController searchController;
 
   @override

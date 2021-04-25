@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vaulty/ui/views/index.dart';
-import 'package:vaulty/view-models/theme_controller.dart';
+import 'package:vaulty/controllers/theme_controller.dart';
 
 void main() {
   runApp(VaultyApp());

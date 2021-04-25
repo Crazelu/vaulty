@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vaulty/ui/shared/responsive_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:vaulty/view-models/home_view_model.dart';
+import 'package:vaulty/controllers/home_controller.dart';
 
 class HomeScreen extends StatelessWidget {
-  final HomeViewModel _homeVM = Get.put(HomeViewModel());
+  final HomeController _homeVM = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(builder: (context, size) {
