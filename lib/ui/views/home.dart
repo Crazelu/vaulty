@@ -7,6 +7,7 @@ import 'package:vaulty/ui/shared/last_accessed_apps_carousel.dart';
 import 'package:vaulty/ui/shared/responsive_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vaulty/controllers/home_controller.dart';
+import 'package:vaulty/ui/shared/search_widget.dart';
 import 'package:vaulty/ui/shared/vertical_spacer.dart';
 import 'package:vaulty/ui/shared/extensions.dart';
 
@@ -22,37 +23,7 @@ class HomeView extends StatelessWidget {
         child: ListView(
           children: [
             VerticalSpacer(),
-            //search widget
-            Center(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                height: 60.h,
-                width: size.width,
-                decoration: BoxDecoration(
-                    color: Theme.of(context).shadowColor,
-                    borderRadius: BorderRadius.circular(15.h)),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        Icons.search_rounded,
-                        color: Theme.of(context).hintColor,
-                      ),
-                      onPressed: () {
-                        _homeController.search();
-                      },
-                    ),
-                    enabledBorder:
-                        OutlineInputBorder(borderSide: BorderSide.none),
-                    focusedBorder:
-                        OutlineInputBorder(borderSide: BorderSide.none),
-                    disabledBorder:
-                        OutlineInputBorder(borderSide: BorderSide.none),
-                  ),
-                ),
-              ),
-            ).pad,
+            Search(),
             VerticalSpacer(flex: 2),
             Align(
               alignment: Alignment.centerLeft,
@@ -77,10 +48,11 @@ class HomeView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 5.w),
                 alignment: Alignment.centerLeft,
                 constraints: BoxConstraints(
-                    maxHeight: size.height * .6,
+                    maxHeight: size.height * .65,
                     minWidth: size.width,
                     maxWidth: size.width),
                 child: ListView.builder(
+                    padding: EdgeInsets.only(bottom: 20.h),
                     itemCount: Account.accounts.length,
                     itemBuilder: (context, index) {
                       return AppCard(account: Account.accounts[index]);
