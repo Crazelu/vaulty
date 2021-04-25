@@ -11,11 +11,13 @@ class VaultyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeController _themeController = Get.put(ThemeController());
-    return GetMaterialApp(
-        title: 'Vaulty',
-        debugShowCheckedModeBanner: false,
-        defaultTransition: Transition.rightToLeft,
-        theme: _themeController.theme,
-        home: IndexScreen());
+    return Obx(
+      () => GetMaterialApp(
+          title: 'Vaulty',
+          debugShowCheckedModeBanner: false,
+          defaultTransition: Transition.rightToLeft,
+          theme: _themeController.theme,
+          home: IndexScreen()),
+    );
   }
 }

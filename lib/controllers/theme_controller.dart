@@ -40,6 +40,7 @@ class ThemeController extends GetxController {
       _theme.value = lightTheme;
       await _storageService!.write(key: THEME, data: LIGHT_THEME);
     }
+    _isLightTheme.value = !_isLightTheme.value;
   }
 
   @override
