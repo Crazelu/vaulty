@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vaulty/routes/router.dart';
 import 'package:vaulty/ui/views/index.dart';
 import 'package:vaulty/controllers/theme_controller.dart';
 
@@ -13,11 +14,13 @@ class VaultyApp extends StatelessWidget {
     ThemeController _themeController = Get.put(ThemeController());
     return Obx(
       () => GetMaterialApp(
-          title: 'Vaulty',
-          debugShowCheckedModeBanner: false,
-          defaultTransition: Transition.rightToLeft,
-          theme: _themeController.theme,
-          home: IndexScreen()),
+        title: 'Vaulty',
+        debugShowCheckedModeBanner: false,
+        defaultTransition: Transition.rightToLeft,
+        theme: _themeController.theme,
+        getPages: VaultyRouter.routes,
+        home: IndexView(),
+      ),
     );
   }
 }

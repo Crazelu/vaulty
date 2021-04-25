@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vaulty/constants/constants.dart';
 import 'package:vaulty/models/account.dart';
 import 'package:vaulty/ui/shared/all_apps_listview.dart';
 import 'package:vaulty/ui/shared/last_accessed_apps_carousel.dart';
@@ -10,7 +11,6 @@ import 'package:vaulty/controllers/home_controller.dart';
 import 'package:vaulty/ui/shared/custom_form_field.dart';
 import 'package:vaulty/ui/shared/vertical_spacer.dart';
 import 'package:vaulty/ui/shared/extensions.dart';
-import 'package:vaulty/ui/views/add_account_info_view.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -43,7 +43,7 @@ class _HomeViewState extends State<HomeView> {
           backgroundColor: Theme.of(context).primaryColor,
           child: Icon(Icons.add),
           onPressed: () {
-            Get.to(AddAccountInfoView());
+            Get.toNamed(AddAccountInfoRoute);
           },
         ),
         builder: (context, size) {

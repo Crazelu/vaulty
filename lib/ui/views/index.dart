@@ -6,12 +6,12 @@ import 'package:vaulty/ui/views/home.dart';
 import 'package:vaulty/ui/views/profile.dart';
 import 'package:vaulty/ui/views/security.dart';
 
-class IndexScreen extends StatefulWidget {
+class IndexView extends StatefulWidget {
   @override
-  _IndexScreenState createState() => _IndexScreenState();
+  _IndexViewState createState() => _IndexViewState();
 }
 
-class _IndexScreenState extends State<IndexScreen> {
+class _IndexViewState extends State<IndexView> {
   int _currentPage = 0;
   late PageController _controller;
   ThemeController _themeController = Get.find();
