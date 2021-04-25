@@ -43,7 +43,7 @@ class _HomeViewState extends State<HomeView> {
           backgroundColor: Theme.of(context).primaryColor,
           child: Icon(Icons.add),
           onPressed: () {
-            Get.to(AddAccountInfo());
+            Get.to(AddAccountInfoView());
           },
         ),
         builder: (context, size) {

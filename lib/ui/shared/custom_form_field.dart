@@ -5,7 +5,9 @@ import 'package:vaulty/ui/shared/extensions.dart';
 
 class CustomFormField extends StatelessWidget {
   final IconData? searchIcon;
+  final IconData? suffixIcon;
   final Function? onSearch;
+  final Function(String)? validator;
   final TextEditingController? controller;
   final FocusNode? focus;
   final String hintText;
@@ -13,7 +15,9 @@ class CustomFormField extends StatelessWidget {
   const CustomFormField(
       {Key? key,
       this.searchIcon,
+      this.suffixIcon,
       this.onSearch,
+      this.validator,
       this.controller,
       this.focus,
       this.hintText: ''})
@@ -32,22 +36,32 @@ class CustomFormField extends StatelessWidget {
           child: TextFormField(
             controller: controller,
             focusNode: focus,
+            validator: (String? data) {
+              if (validator != null) validator!(data ?? '');
+            },
             decoration: InputDecoration(
               hintText: hintText,
-              suffixIcon: searchIcon == null
-                  ? null
-                  : IconButton(
-                      icon: Icon(
-                        searchIcon,
-                        color: Theme.of(context).hintColor,
-                      ),
-                      onPressed: () {
-                        if (onSearch != null) onSearch!();
-                      },
-                    ),
+              suffixIcon: suffixIcon != null
+                  ? Icon(suffixIcon)
+                  : searchIcon == null
+                      ? null
+                      : IconButton(
+                          icon: Icon(
+                            searchIcon,
+                            color: Theme.of(context).hintColor,
+                          ),
+                          onPressed: () {
+                            if (onSearch != null) onSearch!();
+                          },
+                        ),
               enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
               focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
               disabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
+              errorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).errorColor,
+                  ),
+                  borderRadius: BorderRadius.circular(10.h)),
             ),
           ),
         ),

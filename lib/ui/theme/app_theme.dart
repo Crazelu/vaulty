@@ -25,6 +25,7 @@ ThemeData lightTheme = ThemeData(
     iconTheme: IconThemeData(
       color: Color(0xffbababa),
     ),
+    buttonColor: Color(0xff3780ff),
     buttonTheme: ButtonThemeData(
         buttonColor: Color(0xff3780ff),
         shape:
@@ -52,6 +53,7 @@ ThemeData darkTheme = ThemeData(
     primaryIconTheme: IconThemeData(
       color: Color(0xff1055af),
     ),
+    buttonColor: Color(0xff3780ff),
     buttonTheme: ButtonThemeData(
         buttonColor: Color(0xff3780ff),
         shape:
