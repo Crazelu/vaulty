@@ -19,6 +19,7 @@ class AllAppsListView extends StatelessWidget {
           minWidth: size.width,
           maxWidth: size.width),
       child: ListView.builder(
+        physics: BouncingScrollPhysics(),
         padding: EdgeInsets.only(bottom: 20.h),
         itemCount: accounts.length,
         itemBuilder: (context, index) {
