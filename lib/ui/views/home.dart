@@ -4,13 +4,13 @@ import 'package:get/get.dart';
 import 'package:vaulty/models/account.dart';
 import 'package:vaulty/ui/shared/all_apps_listview.dart';
 import 'package:vaulty/ui/shared/last_accessed_apps_carousel.dart';
-import 'package:vaulty/ui/shared/layout.dart';
 import 'package:vaulty/ui/shared/responsive_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vaulty/controllers/home_controller.dart';
-import 'package:vaulty/ui/shared/search_widget.dart';
+import 'package:vaulty/ui/shared/custom_form_field.dart';
 import 'package:vaulty/ui/shared/vertical_spacer.dart';
 import 'package:vaulty/ui/shared/extensions.dart';
+import 'package:vaulty/ui/views/add_account_info_view.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -21,12 +21,11 @@ class _HomeViewState extends State<HomeView> {
   final HomeController _homeController = Get.put(HomeController());
 
   void showSheet() {
-    showBottomSheet(
+    showModalBottomSheet(
         context: context,
         builder: (context) {
-          return LayoutWidget(builder: (context, size) {
-            return Container(height: size.height * .7, width: size.width);
-          });
+          final size = MediaQuery.of(context).size;
+          return Container(height: size.height, width: size.width);
         },
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -44,7 +43,7 @@ class _HomeViewState extends State<HomeView> {
           backgroundColor: Theme.of(context).primaryColor,
           child: Icon(Icons.add),
           onPressed: () {
-            showSheet();
+            Get.to(AddAccountInfo());
           },
         ),
         builder: (context, size) {
@@ -55,7 +54,12 @@ class _HomeViewState extends State<HomeView> {
             child: ListView(
               children: [
                 VerticalSpacer(),
-                Search(),
+                CustomFormField(
+                    hintText: 'Search',
+                    searchIcon: Icons.search_rounded,
+                    onSearch: () {
+                      _homeController.search();
+                    }),
                 VerticalSpacer(flex: 2),
                 Align(
                   alignment: Alignment.centerLeft,

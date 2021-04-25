@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:vaulty/controllers/home_controller.dart';
 import 'package:vaulty/ui/shared/layout.dart';
 import 'package:vaulty/ui/shared/extensions.dart';
 
-class Search extends StatelessWidget {
+class CustomFormField extends StatelessWidget {
+  final IconData? searchIcon;
+  final Function? onSearch;
+  final TextEditingController? controller;
+  final FocusNode? focus;
+  final String hintText;
+
+  const CustomFormField(
+      {Key? key,
+      this.searchIcon,
+      this.onSearch,
+      this.controller,
+      this.focus,
+      this.hintText: ''})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final HomeController _homeController = Get.find();
     return LayoutWidget(builder: (context, size) {
       return Center(
         child: Container(
@@ -18,18 +29,22 @@ class Search extends StatelessWidget {
           decoration: BoxDecoration(
               color: Theme.of(context).shadowColor,
               borderRadius: BorderRadius.circular(15.h)),
-          child: TextField(
+          child: TextFormField(
+            controller: controller,
+            focusNode: focus,
             decoration: InputDecoration(
-              hintText: 'Search',
-              suffixIcon: IconButton(
-                icon: Icon(
-                  Icons.search_rounded,
-                  color: Theme.of(context).hintColor,
-                ),
-                onPressed: () {
-                  _homeController.search();
-                },
-              ),
+              hintText: hintText,
+              suffixIcon: searchIcon == null
+                  ? null
+                  : IconButton(
+                      icon: Icon(
+                        searchIcon,
+                        color: Theme.of(context).hintColor,
+                      ),
+                      onPressed: () {
+                        if (onSearch != null) onSearch!();
+                      },
+                    ),
               enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
               focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
               disabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
