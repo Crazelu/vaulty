@@ -3,6 +3,7 @@ import 'package:vaulty/models/account.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vaulty/ui/shared/extensions.dart';
 import 'package:vaulty/ui/shared/horizontal_spacer.dart';
+import 'package:vaulty/ui/shared/layout.dart';
 
 class LastAccessedAppsCarousel extends StatelessWidget {
   final List<Account> accounts;
@@ -11,13 +12,14 @@ class LastAccessedAppsCarousel extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
+    return LayoutWidget(builder: (context, size) {
       return Container(
         alignment: Alignment.center,
         height: 80.h,
-        width: constraints.maxWidth,
+        width: size.width,
         child: ListView.builder(
             shrinkWrap: true,
+            physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemCount: accounts.length,
             itemBuilder: (context, index) {
@@ -44,9 +46,7 @@ class LastAccessedAppsCarousel extends StatelessWidget {
                                 ),
                               ),
                   ),
-                  HorizontalSpacer(
-                    flex: 2,
-                  )
+                  HorizontalSpacer()
                 ],
               );
             }),

@@ -34,7 +34,8 @@ class HomeView extends StatelessWidget {
             ).pad,
             VerticalSpacer(flex: 1.5),
             LastAccessedAppsCarousel(
-                accounts: Account.accounts.take(3).toList()),
+                    accounts: Account.accounts.take(6).toList())
+                .pad,
             VerticalSpacer(flex: 2),
             Align(
               alignment: Alignment.centerLeft,
