@@ -57,9 +57,9 @@ class _IndexScreenState extends State<IndexScreen> {
           return PageView(
             controller: _controller,
             children: [
-              HomeScreen(),
-              SecurityScreen(),
-              ProfileScreen(),
+              HomeView(),
+              SecurityView(),
+              ProfileView(),
             ],
           );
         });

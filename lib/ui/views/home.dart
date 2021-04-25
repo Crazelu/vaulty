@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vaulty/controllers/home_controller.dart';
 import 'package:vaulty/ui/shared/vertical_spacer.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeView extends StatelessWidget {
   final HomeController _homeController = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
