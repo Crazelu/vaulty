@@ -62,7 +62,7 @@ class _AddAccountInfoViewState extends State<AddAccountInfoView> {
                       controller: _controllers[0],
                       focus: _focusNodes[0],
                       hintText: 'App name*',
-                      suffixIcon: Icons.widgets_rounded,
+                      prefixIcon: Icons.widgets_rounded,
                       validator: (String data) {
                         if (data != 'Hi') {
                           print(data);
@@ -78,7 +78,7 @@ class _AddAccountInfoViewState extends State<AddAccountInfoView> {
                       controller: _controllers[1],
                       focus: _focusNodes[1],
                       hintText: 'Website url',
-                      suffixIcon: Icons.web_rounded,
+                      prefixIcon: Icons.web_rounded,
                     ),
 
                     VerticalSpacer(flex: 2),
@@ -88,7 +88,7 @@ class _AddAccountInfoViewState extends State<AddAccountInfoView> {
                       controller: _controllers[2],
                       focus: _focusNodes[2],
                       hintText: 'Email',
-                      suffixIcon: Icons.alternate_email_rounded,
+                      prefixIcon: Icons.alternate_email_rounded,
                     ),
 
                     VerticalSpacer(flex: 2),
@@ -98,7 +98,7 @@ class _AddAccountInfoViewState extends State<AddAccountInfoView> {
                       controller: _controllers[3],
                       focus: _focusNodes[3],
                       hintText: 'User name',
-                      suffixIcon: Icons.person_outline_rounded,
+                      prefixIcon: Icons.person_outline_rounded,
                     ),
 
                     VerticalSpacer(flex: 2),
@@ -108,7 +108,7 @@ class _AddAccountInfoViewState extends State<AddAccountInfoView> {
                       controller: _controllers[4],
                       focus: _focusNodes[4],
                       hintText: 'Password*',
-                      suffixIcon: Icons.lock_outline_rounded,
+                      prefixIcon: Icons.lock_outline_rounded,
                       validator: (String data) {
                         if (data.isEmpty) {
                           return 'Field cannot be empty';

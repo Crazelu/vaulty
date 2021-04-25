@@ -5,7 +5,7 @@ import 'package:vaulty/ui/shared/extensions.dart';
 
 class CustomFormField extends StatelessWidget {
   final IconData? searchIcon;
-  final IconData? suffixIcon;
+  final IconData? prefixIcon;
   final Function? onSearch;
   final Function(String)? validator;
   final TextEditingController? controller;
@@ -15,7 +15,7 @@ class CustomFormField extends StatelessWidget {
   const CustomFormField(
       {Key? key,
       this.searchIcon,
-      this.suffixIcon,
+      this.prefixIcon,
       this.onSearch,
       this.validator,
       this.controller,
@@ -41,19 +41,18 @@ class CustomFormField extends StatelessWidget {
             },
             decoration: InputDecoration(
               hintText: hintText,
-              suffixIcon: suffixIcon != null
-                  ? Icon(suffixIcon)
-                  : searchIcon == null
-                      ? null
-                      : IconButton(
-                          icon: Icon(
-                            searchIcon,
-                            color: Theme.of(context).hintColor,
-                          ),
-                          onPressed: () {
-                            if (onSearch != null) onSearch!();
-                          },
-                        ),
+              prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
+              suffixIcon: searchIcon == null
+                  ? null
+                  : IconButton(
+                      icon: Icon(
+                        searchIcon,
+                        color: Theme.of(context).hintColor,
+                      ),
+                      onPressed: () {
+                        if (onSearch != null) onSearch!();
+                      },
+                    ),
               enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
               focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
               disabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
