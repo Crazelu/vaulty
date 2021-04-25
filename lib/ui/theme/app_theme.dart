@@ -16,6 +16,7 @@ ThemeData lightTheme = ThemeData(
     unselectedWidgetColor: Color(0xffadadad),
     hintColor: Color(0xffadadad),
     shadowColor: Color(0xfffbfbfb),
+    textSelectionTheme: TextSelectionThemeData(cursorColor: Color(0xff000000)),
     appBarTheme: AppBarTheme(elevation: 0, centerTitle: false),
     primaryIconTheme: IconThemeData(
       color: Color(0xff3780ff),
@@ -37,12 +38,13 @@ ThemeData darkTheme = ThemeData(
         color: Color(0xff040c24), shape: CircularNotchedRectangle()),
     primaryColorBrightness: Brightness.dark,
     primaryColorLight: Colors.white,
-    primaryColorDark: Colors.black,
+    primaryColorDark: Colors.white,
     brightness: Brightness.dark,
     highlightColor: Color(0xff7faeff),
     disabledColor: Color(0xff19213c),
     unselectedWidgetColor: Color(0xffadadad),
-    shadowColor: Color(0xfffbfbfb),
+    shadowColor: Color(0xfffbfbfb).withOpacity(.3),
+    textSelectionTheme: TextSelectionThemeData(cursorColor: Color(0xffffffff)),
     hintColor: Color(0xffadadad),
     appBarTheme: AppBarTheme(elevation: 0, centerTitle: false),
     primaryIconTheme: IconThemeData(

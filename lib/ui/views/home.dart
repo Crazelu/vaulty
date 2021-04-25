@@ -3,17 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vaulty/models/account.dart';
 import 'package:vaulty/ui/shared/app_card.dart';
+import 'package:vaulty/ui/shared/last_accessed_apps_carousel.dart';
 import 'package:vaulty/ui/shared/responsive_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vaulty/controllers/home_controller.dart';
 import 'package:vaulty/ui/shared/vertical_spacer.dart';
-
-extension PaddingExtension on Widget {
-  Padding get pad => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: this,
-      );
-}
+import 'package:vaulty/ui/shared/extensions.dart';
 
 class HomeView extends StatelessWidget {
   final HomeController _homeController = Get.put(HomeController());
@@ -66,7 +61,9 @@ class HomeView extends StatelessWidget {
                 style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700),
               ),
             ).pad,
-            //last accessed scroll view goes here
+            VerticalSpacer(flex: 1.5),
+            LastAccessedAppsCarousel(
+                accounts: Account.accounts.take(3).toList()),
             VerticalSpacer(flex: 2),
             Align(
               alignment: Alignment.centerLeft,
@@ -75,7 +72,7 @@ class HomeView extends StatelessWidget {
                 style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600),
               ),
             ).pad,
-            VerticalSpacer(flex: 2),
+            VerticalSpacer(flex: 1.5),
             Container(
                 padding: EdgeInsets.symmetric(horizontal: 5.w),
                 alignment: Alignment.centerLeft,

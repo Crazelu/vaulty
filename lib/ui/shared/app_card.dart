@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:vaulty/controllers/home_controller.dart';
+import 'package:vaulty/ui/shared/extensions.dart';
 import 'package:vaulty/models/account.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,7 +11,6 @@ class AppCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HomeController _homeController = Get.find();
     return ListTile(
       leading: Container(
         alignment: Alignment.center,
@@ -27,7 +25,7 @@ class AppCard extends StatelessWidget {
             : Text(
                 account.appName.substring(0, 1).toUpperCase(),
                 style: TextStyle(
-                  color: _homeController.getColor(),
+                  color: Theme.of(context).primaryColorDark,
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w800,
                 ),
@@ -40,20 +38,4 @@ class AppCard extends StatelessWidget {
           IconButton(icon: Icon(Icons.more_vert_rounded), onPressed: () {}),
     );
   }
-}
-
-extension ImageIconExtension on String {
-  SizedBox get icon => SizedBox(
-      child: Image.network(
-        this,
-        frameBuilder: (context, child, _, __) {
-          return child;
-        },
-        loadingBuilder: (context, child, loadingProgress) {
-          if (loadingProgress == null) return child;
-          return CupertinoActivityIndicator();
-        },
-      ),
-      width: 35.w,
-      height: 35.w);
 }
